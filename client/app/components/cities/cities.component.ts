@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
 import { CitiesService } from '../../services/cities.service'
+import { City } from '../../../City'
 
 @Component({
     selector: 'cities',
@@ -8,9 +9,12 @@ import { CitiesService } from '../../services/cities.service'
 })
 
 export class CitiesComponent {
-    title = "The title of cities page";
-    cities;
+    cities: City[];
 
-    constructor(private citiesService:CitiesService){
+    constructor(private citiesService:CitiesService) {
+        this.citiesService.getCities()
+            .subscribe(cities => {
+                this.cities = cities;
+            });
     }
 }

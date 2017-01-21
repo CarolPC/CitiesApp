@@ -23,8 +23,12 @@ System.register(['@angular/core', '../../services/cities.service'], function(exp
         execute: function() {
             CitiesComponent = (function () {
                 function CitiesComponent(citiesService) {
+                    var _this = this;
                     this.citiesService = citiesService;
-                    this.title = "The title of cities page";
+                    this.citiesService.getCities()
+                        .subscribe(function (cities) {
+                        _this.cities = cities;
+                    });
                 }
                 CitiesComponent = __decorate([
                     core_1.Component({

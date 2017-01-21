@@ -27,6 +27,10 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map'], fun
                     this.http = http;
                     console.log('Cities Service initialized');
                 }
+                CitiesService.prototype.getCities = function () {
+                    return this.http.get('http://localhost:3000/api/cities')
+                        .map(function (res) { return res.json(); });
+                };
                 CitiesService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])
