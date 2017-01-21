@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const bodyParser = require('body-parser');
+const urlencoded = bodyParser.urlencoded({ extended: false });
 
-router.get('/', (request, response, next) => {
+router.get('/', urlencoded, (request, response, next) => {
     response.render('index.html');
 });
 

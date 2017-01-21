@@ -19,7 +19,7 @@ export class CitiesService {
         headers.append('Content-Type', 'application/json');
 
         return this.http.post(
-            'http:localhost:3000/api/city',
+            'http://localhost:3000/api/cities',
             JSON.stringify(newCity),
             {headers: headers}
         )

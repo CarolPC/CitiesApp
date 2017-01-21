@@ -17,12 +17,12 @@ describe('Requests to the root path', () => {
             .expect('Content-Type', /html/, done);
     });
 
-    /*it('Returns an index file with Cities', (done) => {
+    it('Returns an index file with Cities', (done) => {
 
         request(app)
             .get('/')
             .expect(/cities/i, done);
-    });*/
+    });
 });
 
 describe('Listing cities on /cities', () => {
@@ -49,6 +49,21 @@ describe('Listing cities on /cities', () => {
     });
 });
 
-describe('', () => {
+describe('Creating new cities', () => {
 
+    it('Returns a 201 status code', (done) => {
+
+        request(app)
+            .post('/api/cities')
+            .send('name=Haarlem&isVisited=true')
+            .expect(201, done);
+    });
+
+    it('Returns the city name', (done) => {
+
+        request(app)
+            .post('/api/cities')
+            .send('name=Haarlem&isVisited=true')
+            .expect('"Haarlem"', done);
+    });
 });
