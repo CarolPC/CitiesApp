@@ -1,12 +1,9 @@
-import { Component } from 'angular2/core';
-import { CitiesComponent } from './cities.component'
-import { CountriesComponent } from './countries.component'
+import { Component } from '@angular/core';
+import { CitiesService } from './services/cities.service'
 
 @Component({
     selector: 'my-app',
-    template: `<h1>My Cities</h1>
-                <cities></cities>
-                <countries></countries>`,
-    directives: [CitiesComponent, CountriesComponent]
+    templateUrl: 'app/app.component.html',
+    providers: [CitiesService]
 })
 export class AppComponent { }

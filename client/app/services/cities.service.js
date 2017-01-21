@@ -1,4 +1,4 @@
-System.register(['@angular/core', './services/cities.service'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,32 +10,31 @@ System.register(['@angular/core', './services/cities.service'], function(exports
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, cities_service_1;
-    var AppComponent;
+    var core_1, http_1;
+    var CitiesService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (cities_service_1_1) {
-                cities_service_1 = cities_service_1_1;
-            }],
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
+            function (_1) {}],
         execute: function() {
-            AppComponent = (function () {
-                function AppComponent() {
+            CitiesService = (function () {
+                function CitiesService(http) {
+                    this.http = http;
+                    console.log('Cities Service initialized');
                 }
-                AppComponent = __decorate([
-                    core_1.Component({
-                        selector: 'my-app',
-                        templateUrl: 'app/app.component.html',
-                        providers: [cities_service_1.CitiesService]
-                    }), 
-                    __metadata('design:paramtypes', [])
-                ], AppComponent);
-                return AppComponent;
+                CitiesService = __decorate([
+                    core_1.Injectable(), 
+                    __metadata('design:paramtypes', [http_1.Http])
+                ], CitiesService);
+                return CitiesService;
             }());
-            exports_1("AppComponent", AppComponent);
+            exports_1("CitiesService", CitiesService);
         }
     }
 });
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=cities.service.js.map

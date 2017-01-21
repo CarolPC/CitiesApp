@@ -1,4 +1,4 @@
-System.register(['angular2/core', './cities.service', './auto-grow.directive'], function(exports_1, context_1) {
+System.register(['@angular/core', '../../services/cities.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './cities.service', './auto-grow.directive'], 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, cities_service_1, auto_grow_directive_1;
+    var core_1, cities_service_1;
     var CitiesComponent;
     return {
         setters:[
@@ -19,22 +19,18 @@ System.register(['angular2/core', './cities.service', './auto-grow.directive'], 
             },
             function (cities_service_1_1) {
                 cities_service_1 = cities_service_1_1;
-            },
-            function (auto_grow_directive_1_1) {
-                auto_grow_directive_1 = auto_grow_directive_1_1;
             }],
         execute: function() {
             CitiesComponent = (function () {
                 function CitiesComponent(citiesService) {
+                    this.citiesService = citiesService;
                     this.title = "The title of cities page";
-                    this.cities = citiesService.getCities();
                 }
                 CitiesComponent = __decorate([
                     core_1.Component({
                         selector: 'cities',
-                        template: "\n        <h2>Cities</h2>\n        {{ title }}\n        <input type=\"text\" autoGrow />\n        <ul>\n            <li *ngFor=\"#city of cities\">\n            {{ city }}\n            </li>\n        </ul>\n    ",
+                        templateUrl: 'app/components/cities/cities.component.html',
                         providers: [cities_service_1.CitiesService],
-                        directives: [auto_grow_directive_1.AutoGrowDirective]
                     }), 
                     __metadata('design:paramtypes', [cities_service_1.CitiesService])
                 ], CitiesComponent);
