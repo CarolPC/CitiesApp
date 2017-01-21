@@ -31,6 +31,12 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map'], fun
                     return this.http.get('http://localhost:3000/api/cities')
                         .map(function (res) { return res.json(); });
                 };
+                CitiesService.prototype.addCity = function (newCity) {
+                    var headers = new http_1.Headers();
+                    headers.append('Content-Type', 'application/json');
+                    return this.http.post('http:localhost:3000/api/city', JSON.stringify(newCity), { headers: headers })
+                        .map(function (response) { return response.json(); });
+                };
                 CitiesService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])

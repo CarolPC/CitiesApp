@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class CitiesService {
-    
+
     constructor(private http:Http) {
         console.log('Cities Service initialized');
     }
@@ -12,5 +12,17 @@ export class CitiesService {
     getCities() {
         return this.http.get('http://localhost:3000/api/cities')
             .map(res => res.json());
+    }
+
+    addCity(newCity) {
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        return this.http.post(
+            'http:localhost:3000/api/city',
+            JSON.stringify(newCity),
+            {headers: headers}
+        )
+        .map(response => response.json());
     }
 }

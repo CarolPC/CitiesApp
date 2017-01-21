@@ -30,11 +30,23 @@ System.register(['@angular/core', '../../services/cities.service'], function(exp
                         _this.cities = cities;
                     });
                 }
+                CitiesComponent.prototype.addCity = function (event) {
+                    var _this = this;
+                    event.preventDefault();
+                    var newCity = {
+                        name: this.name,
+                        isVisited: false
+                    };
+                    this.citiesService.addCity(newCity)
+                        .subscribe(function (city) {
+                        _this.cities.push(city);
+                        _this.name = '';
+                    });
+                };
                 CitiesComponent = __decorate([
                     core_1.Component({
                         selector: 'cities',
-                        templateUrl: 'app/components/cities/cities.component.html',
-                        providers: [cities_service_1.CitiesService],
+                        templateUrl: 'app/components/cities/cities.component.html'
                     }), 
                     __metadata('design:paramtypes', [cities_service_1.CitiesService])
                 ], CitiesComponent);
