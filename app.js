@@ -3,8 +3,8 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 
-const index = require('./routes/index');
-const cities = require('./routes/cities');
+const index = require('./server/index');
+const cities = require('./server/cities');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

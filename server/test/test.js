@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../app');
+const app = require('../../app');
 
 describe('Requests to the root path', () => {
 
@@ -30,21 +30,21 @@ describe('Listing cities on /cities', () => {
     it('Returns 200 status code', (done) => {
 
         request(app)
-            .get('/cities')
+            .get('/api/cities')
             .expect(200, done);
     });
 
     it('Returns JSON format', (done) => {
 
         request(app)
-            .get('/cities')
+            .get('/api/cities')
             .expect('Content-Type', /json/, done);
     });
 
     it('Returns initial cities', (done) => {
 
         request(app)
-            .get('/cities')
+            .get('/api/cities')
             .expect(JSON.stringify(['Amsterdam', 'Eindhoven', 'The Hague']), done);
     });
 });
