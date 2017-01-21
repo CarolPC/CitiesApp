@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha server/test/test.js"
+    "test": "NODE_ENV=test mocha server/test/test.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
-    "ng2-bootstrap": "^1.2.5"
+    "ng2-bootstrap": "^1.2.5",
+    "redis": "^2.6.5"
   },
   "devDependencies": {
     "mocha": "^3.2.0",

@@ -1,6 +1,11 @@
 const request = require('supertest');
 const app = require('../../app');
 
+const redis = require('redis');
+const client = redis.createClient();
+client.select('test'.length);
+client.flushdb();
+
 describe('Requests to the root path', () => {
 
     it('Returns a 200 status code', (done) => {
@@ -45,11 +50,15 @@ describe('Listing cities on /cities', () => {
 
         request(app)
             .get('/api/cities')
-            .expect(JSON.stringify(['Amsterdam', 'Eindhoven', 'The Hague']), done);
+            .expect(JSON.stringify([]), done);
     });
 });
 
 describe('Creating new cities', () => {
+
+    before(() => {
+
+    });
 
     it('Returns a 201 status code', (done) => {
 
