@@ -8,7 +8,7 @@ const client = redis.createClient();
 
 client.select((process.env.NODE_ENV || 'development').length);
 
-router.get('/cities', (request, response, next) => {
+router.get('/cities', (request, response) => {
     client.hkeys('cities', (error, names) => {
         if (error) throw error;
 
@@ -16,15 +16,21 @@ router.get('/cities', (request, response, next) => {
     });
 });
 
-router.post('/cities', urlencoded, (request, response, next) => {
+router.post('/cities', urlencoded, (request, response) => {
     const newCity = request.body;
     client.hset('cities', newCity.name, newCity.isVisited, (error) => {
         if (error) throw error;
 
         response.status(201).json(newCity.name);
     });
+});
 
+router.delete('/cities/:name', (request, response) => {
+    client.hdel('cities', request.params.name, (error) => {
+        if (error) throw error;
 
+        response.sendStatus(204);
+    });
 });
 
 module.exports = router;

@@ -56,10 +56,6 @@ describe('Listing cities on /cities', () => {
 
 describe('Creating new cities', () => {
 
-    before(() => {
-
-    });
-
     it('Returns a 201 status code', (done) => {
 
         request(app)
@@ -74,5 +70,24 @@ describe('Creating new cities', () => {
             .post('/api/cities')
             .send('name=Haarlem&isVisited=true')
             .expect('"Haarlem"', done);
+    });
+});
+
+describe('Deleting cities', () => {
+
+    before(() => {
+        client.hset('cities', 'Haarlem', true);
+    });
+
+
+    after(() => {
+        client.flushdb();
+    });
+
+    it('Returns a 204 status code', (done) => {
+
+        request(app)
+            .delete('/api/cities/Haarlem')
+            .expect(204, done);
     });
 });
