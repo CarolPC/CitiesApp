@@ -19,7 +19,7 @@ router.get('/cities', (request, response) => {
 router.post('/cities', urlencoded, (request, response) => {
     const newCity = request.body;
 
-    if (!newCity.name || !newCity.isVisited) {
+    if (!newCity.name || newCity.isVisited === undefined) {
         response.sendStatus(400);
         return false;
     }

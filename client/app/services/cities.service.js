@@ -37,6 +37,10 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map'], fun
                     return this.http.post('http://localhost:3000/api/cities', JSON.stringify(newCity), { headers: headers })
                         .map(function (response) { return response.json(); });
                 };
+                CitiesService.prototype.deleteCity = function (city) {
+                    return this.http.delete('http://localhost:3000/api/cities/' + city)
+                        .map(function (response) { return response.json; });
+                };
                 CitiesService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])

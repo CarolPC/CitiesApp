@@ -23,6 +23,13 @@ export class CitiesService {
             JSON.stringify(newCity),
             {headers: headers}
         )
-        .map(response => response.json());
+        .map(response => response.json())
+        
+    }
+
+    deleteCity(city) {
+
+        return this.http.delete('http://localhost:3000/api/cities/'+city)
+            .map(response => response.json);
     }
 }

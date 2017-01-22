@@ -12,8 +12,12 @@
         <div class="col-md-7">
             {{ city }}
         </div>
-        <div class="col-md-4">
+        <div class="col-md-1">
             <button type="button" class="btn btn-success">Visited</button>
         </div>
+        <div class="col-md-1">
+            <button type="button" (click)="deleteCity(city)" class="btn btn-danger">Delete</button>
+        </div>
+    <br><br>
     </div>
 </div>

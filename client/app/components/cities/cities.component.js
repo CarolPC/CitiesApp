@@ -43,6 +43,12 @@ System.register(['@angular/core', '../../services/cities.service'], function(exp
                         _this.name = '';
                     });
                 };
+                CitiesComponent.prototype.deleteCity = function (city) {
+                    var cities = this.cities;
+                    this.citiesService.deleteCity(city).subscribe(function (data) {
+                        cities.splice(cities.indexOf(city));
+                    });
+                };
                 CitiesComponent = __decorate([
                     core_1.Component({
                         selector: 'cities',

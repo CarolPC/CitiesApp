@@ -10,6 +10,7 @@ import { City } from '../../../City'
 export class CitiesComponent {
     cities: City[];
     name: string;
+    isVisited: boolean;
 
     constructor(private citiesService : CitiesService) {
         this.citiesService.getCities()
@@ -31,5 +32,13 @@ export class CitiesComponent {
                 this.name = '';
             });
 
+    }
+
+    deleteCity(city) {
+        const cities = this.cities;
+
+        this.citiesService.deleteCity(city).subscribe(data => {
+            cities.splice(cities.indexOf(city));
+        })
     }
 }
