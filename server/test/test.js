@@ -71,6 +71,14 @@ describe('Creating new cities', () => {
             .send('name=Haarlem&isVisited=true')
             .expect('"Haarlem"', done);
     });
+
+    it('Validates city name and if it was visited', (done) => {
+
+        request(app)
+            .post('/api/cities')
+            .send('name=&isVisited=')
+            .expect(400, done);
+    });
 });
 
 describe('Deleting cities', () => {

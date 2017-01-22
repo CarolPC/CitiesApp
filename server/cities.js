@@ -18,6 +18,12 @@ router.get('/cities', (request, response) => {
 
 router.post('/cities', urlencoded, (request, response) => {
     const newCity = request.body;
+
+    if (!newCity.name || !newCity.isVisited) {
+        response.sendStatus(400);
+        return false;
+    }
+
     client.hset('cities', newCity.name, newCity.isVisited, (error) => {
         if (error) throw error;
 
