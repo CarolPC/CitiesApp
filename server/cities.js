@@ -39,4 +39,14 @@ router.delete('/cities/:name', (request, response) => {
     });
 });
 
+router.patch('/cities/:name', (request, response) => {
+    const cityName = request.params.name;
+
+    client.hget('cities', cityName, (error, cities) => {
+        client.hset('cities', cityName, !cities);
+
+        response.status(200).json(!cities);
+    });
+});
+
 module.exports = router;

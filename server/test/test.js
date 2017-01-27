@@ -99,3 +99,29 @@ describe('Deleting cities', () => {
             .expect(204, done);
     });
 });
+
+describe('Updating cities', () => {
+
+    before(() => {
+        client.hset('cities', 'Haarlem', true);
+    });
+
+    after(() => {
+        client.flushdb();
+    });
+
+    it('Returns a 200 status code', (done) => {
+
+        request(app)
+            .patch('/api/cities/Haarlem')
+            .expect(200, done);
+
+    });
+
+    it('Returns isVisited value', (done) => {
+
+        request(app)
+            .patch('/api/cities/Haarlem')
+            .expect('false', done);
+    });
+});
